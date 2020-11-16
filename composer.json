@@ -1,5 +1,5 @@
 {
-    "name": "itoeste-socket-service",
+    "name": "itoeste/socket",
     "description": "servicios de socket de itoeste",
     "type": "library",
     "license": "MIT",
