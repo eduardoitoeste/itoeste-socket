@@ -1,0 +1,20 @@
+{
+    "name": "itoeste-socket-service",
+    "description": "servicios de socket de itoeste",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "eduardoitoeste",
+            "email": "eduardoitoeste@gmail.com"
+        }
+    ],
+    "require": {},
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload":{
+        "psr-4":{
+            "itoeste\\socket\\": "src/"
+        }
+    }
+}
