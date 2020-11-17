@@ -2,7 +2,7 @@
 namespace itoeste\socket;
 use Exception;
 Class Socket {
-    private $route = "192.168.1.8:3333";
+    private $route = "157.245.219.22";
     private $token = null;
     function __construct(){
 
