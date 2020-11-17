@@ -71,5 +71,4 @@ Class Socket {
         }
         return false;
     }
-
 }
