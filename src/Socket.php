@@ -17,10 +17,15 @@ Class Socket {
         $this->token = env("APIKEY_ITOESTESOCKET");
     }
 
-    public function Notification($data)
+
+    public function ChannelEmit($channel,$data)
     {
-        $ruta = "http://".$this->route."/notification";
-        $formJson = json_encode($data);
+        $ruta = "http://".$this->route."/channel/emit";
+        $form = [
+            'channel'=>$channel,
+            'data'=>$data
+        ];
+        $formJson = json_encode($form);
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => $ruta,
@@ -54,15 +59,15 @@ Class Socket {
                 return $responseJson2;
             }else{
                 if($info['http_code'] == 500){
-                    throw new Exception("Error 500 en servicio Notification",4);
+                    throw new Exception("Error 500 del servicio en channel",4);
                 }else if($info['http_code'] == 401){
-                    throw new Exception("Error de privilegios , es necesario el token de auth en: Notification",5);
+                    throw new Exception("Error de privilegios , es necesario el token de auth en channel",5);
                 }else if($info['http_code'] == 404){
-                    throw new Exception("Error 404 con el servicio Notification",4);
+                    throw new Exception("Error 404 con el servicio channel",4);
                 }else if($info['http_code'] == 404){
-                    throw new Exception("Error 404 con el servicio Notification",7);
+                    throw new Exception("Error 404 con el servicio channel",7);
                 }else{
-                    throw new Exception("Error desconocido con el servicio Notification",8);
+                    throw new Exception("Error desconocido con el servicio channel",8);
                 }
             }
             
