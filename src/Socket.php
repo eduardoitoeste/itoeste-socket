@@ -33,7 +33,7 @@ Class Socket {
             CURLOPT_POSTFIELDS => $formJson,
             CURLOPT_HTTPHEADER => array(
             "accept: application/json",
-            "api-key: ".$this->token,
+            "api-key: bearer ".$this->token,
             "content-type: application/json"
             ),
         ));
