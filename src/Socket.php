@@ -54,7 +54,7 @@ Class Socket {
                 return $responseJson2;
             }else{
                 if($info['http_code'] == 500){
-                    throw new Exception("Error 500 en servicio Notification".$responseJson2,4);
+                    throw new Exception("Error 500 en servicio Notification",4);
                 }else if($info['http_code'] == 401){
                     throw new Exception("Error de privilegios , es necesario el token de auth en: Notification",5);
                 }else if($info['http_code'] == 404){
