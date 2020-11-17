@@ -2,7 +2,7 @@
 namespace itoeste\socket;
 use Exception;
 Class Socket {
-    private $route = "157.245.219.22";
+    private $route = "192.168.1.8:3333";
     private $token = null;
     function __construct(){
 
@@ -39,6 +39,7 @@ Class Socket {
         ));
         $response = curl_exec($curl);
         $err = curl_error($curl);
+        $info = curl_getinfo($curl);
         curl_close($curl);
 
         if($err){
@@ -46,7 +47,29 @@ Class Socket {
         }
 
         $responseJson2 = json_decode($response);
-        return true;
+        if(!empty($info)){
+
+            if($info['http_code'] == 200){
+                
+                return $responseJson2;
+            }else{
+                if($info['http_code'] == 500){
+                    throw new Exception("Error 500 en servicio Notification".$responseJson2,4);
+                }else if($info['http_code'] == 401){
+                    throw new Exception("Error de privilegios , es necesario el token de auth en: Notification",5);
+                }else if($info['http_code'] == 404){
+                    throw new Exception("Error 404 con el servicio Notification",4);
+                }else if($info['http_code'] == 404){
+                    throw new Exception("Error 404 con el servicio Notification",7);
+                }else{
+                    throw new Exception("Error desconocido con el servicio Notification",8);
+                }
+            }
+            
+        }else{
+            throw new Exception("Error curl info vacio",9);
+        }
+        return false;
     }
 
 }
