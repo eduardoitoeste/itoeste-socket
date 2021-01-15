@@ -2,7 +2,7 @@
 namespace itoeste\socket;
 use Exception;
 Class Socket {
-    private $route = "157.245.219.22";
+    private $route = "socket.sistemaiea.com";
     private $token = null;
     function __construct(){
 
@@ -20,7 +20,7 @@ Class Socket {
 
     public function ChannelEmit($channel,$data)
     {
-        $ruta = "http://".$this->route."/channel/emit";
+        $ruta = "https://".$this->route."/channel/emit";
         $form = [
             'channel'=>$channel,
             'data'=>$data
